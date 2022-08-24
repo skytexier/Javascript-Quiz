@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaScript Quiz</title>
     <link rel="stylesheet" href="./Assets/CSS/reset.css">
     <link rel="stylesheet" href="./Assets/CSS/style.css">
 </head>
@@ -17,18 +17,24 @@
     
 
 <section id="quizmain">
-    <h3 id="mainquestion">Question Here</h3>
-    <ul id="quizquestion">
-        <li>What is my favorite color?</li>
-        <li>What is my favorite color?</li>
-        <li>What is my favorite color?</li>
-        <li>What is my favorite color?</li>
-    </ul>
+    <h3 id="mainquestion">Javascript Quiz</h3>
+    <div class ="question-container" id="question-container">
+        <div id ="options">
+        <!-- <button class ="option" id="1">Option 1</button>
+        <button class ="option" id="2">Option 2</button>
+        <button class ="option" id="3">Option 3</button>
+        <button class ="option" id="4">Option 4</button> -->
+        </div>
+    </div>
     <button id="startgame">Start Quiz</button>
-
+</section>
+<section>
+    <div class ="result" id="result">
+    <p>Right or Wrong</p>
+    </div>
 </section>
 
 
-<script src="/Develop/script.js"></script>
+<script src="./Develop/script.js"></script>
 </body>
 </html>

@@ -71,7 +71,7 @@ function startquiz () {
 
    
  startGame.textContent = "";
- mainQuestion.textContent = multipleQuestions.question;
+ mainQuestion.textContent = ;
  quizzUl.append(quizz1);
  quizz1.textContent = "question 1";
 
