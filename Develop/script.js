@@ -9,6 +9,7 @@ var quizzUl = document.querySelector("#quizquestion");
 var result = document.querySelector("#result");
 var quizzContainer = document.querySelector("#question-container");
 var options = document.querySelector("#options");
+var time = 120
 
 var iterator = 0;
 
@@ -28,7 +29,7 @@ var multipleQuestions = [
       "Downloads items from JavaScript to your computer",
       "Creates a repository for JS objects"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
   },
 
   {
@@ -40,7 +41,7 @@ var multipleQuestions = [
       "Cascading Style Sheet",
       "Cooking Something Saucy"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
   },
   {
     id: 2,
@@ -76,29 +77,54 @@ var multipleQuestions = [
     ],
     correctAnswer: 1,
   },
+  {
+    id: 5,
+  },
 ];
 
-//Timer
-function startTimer() {
-  setInterval(setTimer, 90000);
-}
 //Start Game
 startGame.addEventListener("click", startQuiz);
+//Start Game Timer
+startGame.addEventListener("click", function(){
+  //Timer
+  var startTimer = setInterval(function () { 
+    time --;
+    timer.textContent = "" + time
+    if (time === 0){
+      clearInterval(startTimer);
+      gameOver(); 
+      
+    }
+  }, 1000);
+});
+
+function gameOver(){
+  multipleQuestions.textContent = "";
+  mainQuestion.textContent = "Out of time!"
+  quizzContainer.setAttribute("style", "display: none");
+  result.setAttribute("style", "display: none");
+  startGame.setAttribute("style", "display: flex");
+  time = 120;
+}
+
+
+
 function startQuiz() {
+
   //Pre Game Styling
   quizzContainer.setAttribute("style", "display: block");
   startGame.setAttribute("style", "display:none");
   result.setAttribute("style", "display: none");
-
+  
   // Clear what was inside the questionaires
   options.innerHTML = "";
   result.textContent = "";
+  mainQuestion.textContent = "";
 
 
-  //First Question Text Content
+  // Question Text Content
   var currentQuestion = multipleQuestions[iterator]; // { question: "", answers: [], correctAnswer: 1 }
   mainQuestion.textContent = currentQuestion.question;
-
   for (var i = 0; i < currentQuestion.answers.length; i++) {
     var currentAnswer = currentQuestion.answers[i];
 
@@ -112,19 +138,12 @@ function startQuiz() {
     buttonOptionEl.textContent = currentAnswer
 
     buttonOptionEl.addEventListener("click", handleSelectOption);
-    options.appendChild(buttonOptionEl)
+    options.appendChild(buttonOptionEl);
 
-  }
-
-  //Selecting
-  var selected = "";
-
-  console.log(selected);
-  //If loop?
-  if (selected === true) {
-    startQuiz();
-  }
-}
+    if (multipleQuestions.id === 5){
+      startQuiz();
+    }
+}};
 
 function handleSelectOption() {
   var correctAnswer = this.getAttribute("data-correct");
@@ -134,14 +153,15 @@ function handleSelectOption() {
     // TODO:
     this.style.backgroundColor = "green";
     result.textContent = "Correct!";
+    result.setAttribute("style", "display: none");
     iterator++;
     startQuiz();
   } else {
     this.style.backgroundColor = "red";
+    result.setAttribute("style", "display: block");
     result.textContent = "Wrong!";
-  }
-  result.setAttribute("style", "display: flex");
-  selected = this.textContent;
-  
-  
-}
+    time = time - 10;
+
+  };
+};
+
