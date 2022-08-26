@@ -11,14 +11,17 @@ In addition to dynamic changes of styling this script will append new questions,
 While this script may prove useful for an individual user, it is also beneficial to the quiz writer as they can implement a multitude of questions with various answers and have those questions/answers be as long or prolific as needed.
 
 This project was undoubtedly the most difficult yet as it fully blended JavaScript, CSS and basic HTML together. I found it difficult initially to create a function to append each question with their individual answers and to have those answers become dynamic based upon a users selection. Thankfully my tutor, Esterling Accime, was super helpful in directing me towards using for loops and setting up on click events for the answers.  
+
 ## Table of Contents
 - [Installation] (#installation)
 - [Live] (#live)
 - [Usage/Examples] (#usage)
 - [Credits] (#credits)
 - [License] (#license)
+
 ## Live
 - [https://skytexier.github.io/Javascript-Quiz/](https://skytexier.github.io/Javascript-Quiz/)
+
 ## Installation
 
 For proper installation or usage of the website include index.html and assets folder. Script is found in assets folder.
@@ -41,6 +44,7 @@ If a user selects too many wrong answers and runs out of time then the quiz will
 
 Upon completing the quiz, within the time frame, a user can then submit their name. This submission will take them to the highscores page (its all one page really) where they can see their highscore next to their
 ![alt text](./Assets/Images/quizcomplete.png)
+
 ## Credits
 
 Most of the help I recieved on this project came from Esterling Accime, the tutor I was assigned.
@@ -55,6 +59,7 @@ Those resources are listed below:
 - GeeksforGeeks [https://www.geeksforgeeks.org/how-to-create-a-simple-javascript-quiz/](https://www.geeksforgeeks.org/how-to-create-a-simple-javascript-quiz/)
                 [https://www.geeksforgeeks.org/introduction-to-arrays/](https://www.geeksforgeeks.org/introduction-to-arrays/)
 - Techie Delight [https://www.techiedelight.com/loop-through-array-of-objects-javascript/](https://www.techiedelight.com/loop-through-array-of-objects-javascript/)
+
 ## License
 MIT License
  
@@ -77,4 +82,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
