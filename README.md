@@ -30,17 +30,17 @@ This page initially loads with little styling or elements on screen except for s
 
 However upon clicking start quiz our script will add a new question and potential answers to the page.
 
-![alt text](./Assets/images/quizmain.png)
+![alt text](./Assets/Images/quizmain.png)
 
 If the user selects the wrong answer for the question, a status message appears alerting them. Time from the test timer will also be subtracted.
 
-![alt text](./Assets/images/wrong.png)
+![alt text](./Assets/Images/wrong.png)
 
 If a user selects too many wrong answers and runs out of time then the quiz will alert them with this page.
-![alt text](./Assets/images/retry.png)
+![alt text](./Assets/Images/retry.png)
 
 Upon completing the quiz, within the time frame, a user can then submit their name. This submission will take them to the highscores page (its all one page really) where they can see their highscore next to their
-![alt text](./Assets/images/quizcomplete.png)
+![alt text](./Assets/Images/quizcomplete.png)
 ## Credits
 
 Most of the help I recieved on this project came from Esterling Accime, the tutor I was assigned.
