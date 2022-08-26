@@ -18,8 +18,6 @@ var input = document.createElement("input");
 
 var iterator = 0;
 
-console.log(options);
-
 //Pre Quiz Attributes
 quizzContainer.setAttribute("style", "display: none");
 result.setAttribute("style", "display: none");
@@ -86,14 +84,13 @@ var multipleQuestions = [
 ];
 
 
-//Highscore Button On Click
+//Highscore Button On Click --> Show Scores
 highscoreBtn.addEventListener("click", showScores);
-//Start Game On click 
+//Start Game On click --> Start Quiz
 startGame.addEventListener("click", startQuiz);
-//Start Game Timer On click
+//Start Game Timer On click --> Starts Game Timer
 startGame.addEventListener("click", function(){
-  
-  //Timer
+//Timer
   var startTimer = setInterval(function () { 
     time --;
     timer.textContent = "" + time
@@ -136,13 +133,14 @@ function highScore(){
   highscoreSubmit.textContent = "Submit your name and highscore!"
   console.log(time)
 
+  // High Score submit on click, saves to localstorage
   highscoreSubmit.addEventListener("click", function (){
     localStorage.setItem('score', input.value + " : " + time)
     showScores();
 });
 
 }
-
+/// Resets Game if time runs out
 function gameOver(){
   multipleQuestions.textContent = "";
   mainQuestion.textContent = "Out of time! Press Start Quiz to retry!!"
@@ -150,10 +148,11 @@ function gameOver(){
   result.setAttribute("style", "display: none");
   startGame.setAttribute("style", "display: flex");
   time = 120;
+  iterator = 0;
 }
 
 
-
+//Start Quiz function
 function startQuiz() {
   //Pre Game Styling
   quizzContainer.setAttribute("style", "display: block");
@@ -167,8 +166,11 @@ function startQuiz() {
   result.textContent = "";
   mainQuestion.textContent = "";
 
+  //Reset Timer
+
 
   // Question Text Content
+  // If iterator runs past current questions then...
   if (iterator < 5) {
   var currentQuestion = multipleQuestions[iterator]; // { question: "", answers: [], correctAnswer: 1 }
   mainQuestion.textContent = currentQuestion.question;
@@ -187,9 +189,7 @@ function startQuiz() {
     buttonOptionEl.addEventListener("click", handleSelectOption);
     options.appendChild(buttonOptionEl);
   console.log(iterator); 
-    // if (){
-    //   startQuiz();
-    // }
+ 
 }} else {
   highscoreEl.setAttribute("style", "display:block");
   highScore();
@@ -200,13 +200,14 @@ function handleSelectOption() {
   var correctAnswer = this.getAttribute("data-correct");
   var userAnswer = this.textContent;
 
+  // If answer is correct
   if (correctAnswer === userAnswer) {
-    // TODO:
     this.style.backgroundColor = "green";
     result.textContent = "Correct!";
     result.setAttribute("style", "display: none");
     iterator++;
     startQuiz();
+  // If answer is wrong
   } else {
     this.style.backgroundColor = "red";
     result.setAttribute("style", "display: block");
