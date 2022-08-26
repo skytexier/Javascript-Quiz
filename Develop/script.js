@@ -94,7 +94,7 @@ startGame.addEventListener("click", function(){
   var startTimer = setInterval(function () { 
     time --;
     timer.textContent = "" + time
-    if (time === 0){
+    if (time === 0 || time < 0){
       clearInterval(startTimer);
       gameOver(); 
     } if (iterator === 5) {
@@ -143,7 +143,7 @@ function highScore(){
 /// Resets Game if time runs out
 function gameOver(){
   multipleQuestions.textContent = "";
-  mainQuestion.textContent = "Out of time! Press Start Quiz to retry!!"
+  mainQuestion.textContent = "Out of time! Press the button below to retry!"
   quizzContainer.setAttribute("style", "display: none");
   result.setAttribute("style", "display: none");
   startGame.setAttribute("style", "display: flex");
@@ -167,7 +167,6 @@ function startQuiz() {
   mainQuestion.textContent = "";
 
   //Reset Timer
-
 
   // Question Text Content
   // If iterator runs past current questions then...
@@ -193,7 +192,6 @@ function startQuiz() {
 }} else {
   highscoreEl.setAttribute("style", "display:block");
   highScore();
-  console.log(time)
 }};
 
 function handleSelectOption() {
