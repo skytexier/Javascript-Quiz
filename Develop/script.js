@@ -13,7 +13,6 @@ var options = document.querySelector("#options");
 var highscoreBtn = document.getElementById('highscoreBtn');
 var highscoreEl = document.querySelector('#highscore');
 var time = 120
-
 var highscoreSubmit = document.createElement("button");
 var input = document.createElement("input");
 
@@ -25,6 +24,7 @@ console.log(options);
 quizzContainer.setAttribute("style", "display: none");
 result.setAttribute("style", "display: none");
 
+// Quiz Question Object Array
 var multipleQuestions = [
   {
     id: 0,
@@ -85,10 +85,14 @@ var multipleQuestions = [
   },
 ];
 
-//Start Game
+
+//Highscore Button On Click
+highscoreBtn.addEventListener("click", showScores);
+//Start Game On click 
 startGame.addEventListener("click", startQuiz);
-//Start Game Timer
+//Start Game Timer On click
 startGame.addEventListener("click", function(){
+  
   //Timer
   var startTimer = setInterval(function () { 
     time --;
@@ -102,22 +106,39 @@ startGame.addEventListener("click", function(){
   }, 1000);
 });
 
-//Highscore
-highscoreBtn.addEventListener("click", highScore);
+//Highscore Board
+function showScores(){
+mainQuestion.textContent = localStorage.getItem('score');
+quizzContainer.setAttribute("style", "display: none");
+result.setAttribute("style", "display: none");
+startGame.textContent =  "Restart quiz?"
+startGame.addEventListener("click", startQuiz)
+iterator = 0
+startGame.setAttribute("style", "display: block");
+startPrompt.textContent = "Above is your name followed by your score!"
+}
 
+
+
+// Highscore / End of Game submit
 function highScore(){
-mainQuestion.textContent = "Congrats on completing the quiz! You can now long the time left as a highscore! Remember, the more time you have left the higher the score."
-startPrompt.setAttribute('style', 'display: block',);
-startPrompt.textContent = "Enter your initials below!"
-submit.setAttribute('style', 'display: inline-block');
-highscoreEl.append(highscoreSubmit);
-highscoreEl.append(input);
-highscoreSubmit.textContent = "Submit your name and highscore!"
-console.log(time)
+  //Text
+  mainQuestion.textContent = "Congrats on completing the quiz! You can now long the time left as a highscore! Remember, the more time you have left the higher the score."
+  startPrompt.setAttribute('style', 'display: block',);
+  startPrompt.textContent = "Enter your initials below!"
+  input.setAttribute('style', 'display: inline-block');
+  //Input
+  input.type = "text"
+  input.name = "fname"
+  input.value = ""
+  highscoreEl.append(input);
+  highscoreEl.append(highscoreSubmit);
+  highscoreSubmit.textContent = "Submit your name and highscore!"
+  console.log(time)
 
-highscoreSubmit.addEventListener("click", function (){
-submit.textContent = "" + time;
-
+  highscoreSubmit.addEventListener("click", function (){
+    localStorage.setItem('score', input.value + " : " + time)
+    showScores();
 });
 
 }
@@ -139,6 +160,7 @@ function startQuiz() {
   startGame.setAttribute("style", "display:none");
   result.setAttribute("style", "display: none");
   startPrompt.setAttribute("style", "display:none");
+  highscoreEl.setAttribute("style", "display:none");
   
   // Clear what was inside the questionaires
   options.innerHTML = "";
@@ -169,6 +191,7 @@ function startQuiz() {
     //   startQuiz();
     // }
 }} else {
+  highscoreEl.setAttribute("style", "display:block");
   highScore();
   console.log(time)
 }};

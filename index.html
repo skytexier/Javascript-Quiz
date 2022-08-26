@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./Assets/CSS/style.css">
 </head>
 <header>
-    <button id="highscores">Highscores</button>
+    <button id="highscoreBtn">Highscores</button>
     <h2>Test Timer: <span id="timer"></span></h2>
     
 </header>
@@ -18,6 +18,7 @@
 
 <section id="quizmain">
     <h3 id="mainquestion">Javascript Quiz</h3>
+    <h2 id ="start-prompt">Try to answer this quiz's questions as fast as you can, for every incorrect answer time will be deducted from the test timer. Highscores are based upon the greatest time left. Good luck!</h2>
     <div class ="question-container" id="question-container">
         <div id ="options">
         <!-- <button class ="option" id="1">Option 1</button>
@@ -25,9 +26,9 @@
         <button class ="option" id="3">Option 3</button>
         <button class ="option" id="4">Option 4</button> -->
         </div>
-        <div class="highscore" input>
-
+        <div class="highscore" id="highscore">
         </div>
+
     </div>
     <button id="startgame">Start Quiz</button>
 </section>

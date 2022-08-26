@@ -26,11 +26,24 @@ header {
     font-size: 30px;
 }
 
+#start-prompt {
+    color: aliceblue;
+    font-size: 20px;
+    width: 400px;
+    text-align: center;
+    margin: 15px;
+}
+
+
 header h2{
     color: rgb(180, 0, 69);
 }
 
-#highscores {
+#highscore button {
+    margin: 15px;
+}
+
+#highscoreBtn {
     color: rgb(180, 0, 69);
 }
 
@@ -50,6 +63,7 @@ header h2{
     margin: 10px auto;
     font-size: 50px;
     color: rgb(180, 0, 69);
+    text-align: center;
 }
 
 #quizmain li {
@@ -59,6 +73,7 @@ header h2{
 
 #startgame {
     color: rgb(180, 0, 69);
+    text-align: center;
 }
 
 #quizquestion li {
