@@ -3,13 +3,19 @@
 var questionselect = document.querySelector("#quizmain");
 var timer = document.querySelector("#timer");
 var startGame = document.querySelector("#startgame");
+var startPrompt = document.getElementById('start-prompt');
 var mainQuestion = document.querySelector("#mainquestion");
 var choice = document.querySelector("#choice");
 var quizzUl = document.querySelector("#quizquestion");
 var result = document.querySelector("#result");
 var quizzContainer = document.querySelector("#question-container");
 var options = document.querySelector("#options");
+var highscoreBtn = document.getElementById('highscoreBtn');
+var highscoreEl = document.querySelector('#highscore');
 var time = 120
+
+var highscoreSubmit = document.createElement("button");
+var input = document.createElement("input");
 
 var iterator = 0;
 
@@ -77,9 +83,6 @@ var multipleQuestions = [
     ],
     correctAnswer: 1,
   },
-  {
-    id: 5,
-  },
 ];
 
 //Start Game
@@ -93,14 +96,35 @@ startGame.addEventListener("click", function(){
     if (time === 0){
       clearInterval(startTimer);
       gameOver(); 
-      
+    } if (iterator === 5) {
+      clearInterval(startTimer);
     }
   }, 1000);
 });
 
+//Highscore
+highscoreBtn.addEventListener("click", highScore);
+
+function highScore(){
+mainQuestion.textContent = "Congrats on completing the quiz! You can now long the time left as a highscore! Remember, the more time you have left the higher the score."
+startPrompt.setAttribute('style', 'display: block',);
+startPrompt.textContent = "Enter your initials below!"
+submit.setAttribute('style', 'display: inline-block');
+highscoreEl.append(highscoreSubmit);
+highscoreEl.append(input);
+highscoreSubmit.textContent = "Submit your name and highscore!"
+console.log(time)
+
+highscoreSubmit.addEventListener("click", function (){
+submit.textContent = "" + time;
+
+});
+
+}
+
 function gameOver(){
   multipleQuestions.textContent = "";
-  mainQuestion.textContent = "Out of time!"
+  mainQuestion.textContent = "Out of time! Press Start Quiz to retry!!"
   quizzContainer.setAttribute("style", "display: none");
   result.setAttribute("style", "display: none");
   startGame.setAttribute("style", "display: flex");
@@ -110,11 +134,11 @@ function gameOver(){
 
 
 function startQuiz() {
-
   //Pre Game Styling
   quizzContainer.setAttribute("style", "display: block");
   startGame.setAttribute("style", "display:none");
   result.setAttribute("style", "display: none");
+  startPrompt.setAttribute("style", "display:none");
   
   // Clear what was inside the questionaires
   options.innerHTML = "";
@@ -123,6 +147,7 @@ function startQuiz() {
 
 
   // Question Text Content
+  if (iterator < 5) {
   var currentQuestion = multipleQuestions[iterator]; // { question: "", answers: [], correctAnswer: 1 }
   mainQuestion.textContent = currentQuestion.question;
   for (var i = 0; i < currentQuestion.answers.length; i++) {
@@ -139,10 +164,13 @@ function startQuiz() {
 
     buttonOptionEl.addEventListener("click", handleSelectOption);
     options.appendChild(buttonOptionEl);
-
-    if (multipleQuestions.id === 5){
-      startQuiz();
-    }
+  console.log(iterator); 
+    // if (){
+    //   startQuiz();
+    // }
+}} else {
+  highScore();
+  console.log(time)
 }};
 
 function handleSelectOption() {
