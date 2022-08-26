@@ -18,7 +18,7 @@ This project was undoubtedly the most difficult yet as it fully blended JavaScri
 - [Credits] (#credits)
 - [License] (#license)
 ## Live
-- [https://skytexier.github.io/Javascript-Password-Generator/](https://skytexier.github.io/Javascript-Password-Generator/)
+- [https://skytexier.github.io/Javascript-Quiz/](https://skytexier.github.io/Javascript-Quiz/)
 ## Installation
 
 For proper installation or usage of the website include index.html and assets folder. Script is found in assets folder.
